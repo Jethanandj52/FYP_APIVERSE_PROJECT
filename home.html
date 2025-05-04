@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIverse</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="home2.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/title-logo.png" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body id="body">
+    <div>
+        <div class="admin">
+            <div class="nav">
+                <div class="navFirst">
+                    <img src="assets/title-logo.png" alt="">
+                    <div class="name">APIVerse</div>
+                </div>
+                <div class="navSearch">
+                    <input type="text" placeholder="Search APIs..." id="searchingApi">
+                </div>
+                <div class="navIcon">
+                    <!-- <i class="fa-solid fa-bell" class="ii" onclick="toggleNotifications()"></i> -->
+                     <div></div>
+                    <i class="fa-solid fa-user" onclick="userhomeContainer()"> </i>
+                    <i class="fa fa-heart"></i>
+
+
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebarFirst">
+                    <div class="navigation">
+                        <i class="fas fa-compass"></i>
+                        <div class="name">Navigation</div>
+                    </div>
+                    <div class="sidebarSecond">
+                        <div class="navigation2" onclick="doc()">
+                            <i class="fas fa-home"></i>
+                            <div class="name">Home</div>
+                        </div>
+                        <div class="navigation2" onclick="apis()">
+                            <i class="fas fa-plug"></i>
+                            <div class="name">API</div>
+                        </div>
+                       
+                        <div class="navigation2" onclick="team()">
+                            <i class="fas fa-users"></i>
+                            <div class="name">Team</div>
+                        </div>
+                        <div class="navigation2" onclick="information()">
+                            <i class="fas fa-info-circle"></i>
+                            <div class="name">About</div>
+                        </div>
+                        <div class="navigation2" onclick="contact()">
+                            <i class="fas fa-contact-book"></i>
+                            <div class="name">Contact</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="main">
+                <div id="overview" style="display: none;">
+                    <div class=" overview">
+                        <i class="fas fa-home"></i>
+                        <div class="name">Dashboard Overview</div>
+                    </div>
+
+                    <div class="mainCard">
+                        <div class="cards">
+                            <div class="cardName">Total APIs</div>
+                            <div id="apiCountDiv"></div>
+
+                        </div>
+
+                        <div class="cards">
+                            <div class="cardName">Active Users</div>
+                            <div id="userCount">0</div>
+                        </div>
+
+                        <div class="cards">
+                            <div class="cardName">API Calls Today </div>
+                            <div class="cardCount" id="apiCall">0</div>
+                        </div>
+
+                        <div class="cards">
+                            <div class="cardName">Security Alerts</div>
+                            <div class="cardCount" id="apiSecurity">0</div>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>API Usage Over Time</h3>
+                        <canvas id="apiUsageChart"></canvas>
+                    </div>
+
+                </div>
+                <!-- api managment -->
+                <div id="home" class="api" style="display: none;">
+                    <div id="popular">
+                        <h2><i class="fas fa-chart-line"></i> Popular Api</h2> <br>
+                        <div id="apiHomeCardContainer"></div>
+                        
+
+
+                    </div>
+
+                    <h2><i class="fas fa-box"></i> Category</h2> <br>
+                    
+                    <div class="mainCard categoryContainer">
+                        <div class="cards categoryCard" onclick="weather()">
+                            <div class="cardName">Weather Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="news()">
+                            <div class="cardName">News Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="payment()">
+                            <div class="cardName">Payment Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="communication()">
+                            <div class="cardName">Communication Api</div>
+                        </div>
+                        
+                        <div class="cards categoryCard" onclick="entertainment()">
+                            <div class="cardName">Entertainment Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="development()">
+                            <div class="cardName">Development Api</div>
+                        </div>
+
+                        <div class="cards categoryCard" onclick="geoLocation()">
+                            <div class="cardName">Geo Location Api</div>
+                        </div>
+
+                        <div class="cards categoryCard" onclick="allApi()">
+                            <div class="cardName">View All Api's</div>
+                        </div>
+                    </div>
+                    <br>
+                   
+
+                    
+
+                </div>
+
+
+                <div id="doc" style="display:block;">
+                     
+                    <section class="api-info-section">
+                        <h2>📘 What is an API?</h2>
+                        <p><strong>API</strong> stands for <strong>Application Programming Interface</strong>. It’s a way for two different software programs to talk to each other and share data or functions.</p>
+                        <p>Think of an API as a **middleman** or **messenger** that delivers your request to a system and brings back the result — without you needing to know what’s happening behind the scenes.</p>
+                        <p><strong>In simple words:</strong> An API is like a bridge that connects your app to another app or service, and helps them exchange data securely.</p>
+                    
+                        <h3>🛠️ Real-Life Example of an API</h3>
+                        <p>Imagine you're in a restaurant. You place an order with the waiter. The waiter tells the kitchen, gets your food, and brings it back to your table. You don’t deal with the kitchen directly.</p>
+                        <p>Here’s the comparison:</p>
+                        <ul>
+                            <li><strong>You:</strong> The user or client</li>
+                            <li><strong>Waiter:</strong> The API</li>
+                            <li><strong>Kitchen:</strong> The server or database</li>
+                        </ul>
+                        <p>The waiter (API) knows how to talk to the kitchen (server), and you just get the result (your food or data) without worrying about how it was made.</p>
+                    
+                        <h3>🧭 How APIs Work (Step-by-Step)</h3>
+                        <ol>
+                            <li>You (the user) make a request — for example, you want weather info.</li>
+                            <li>Your app sends this request to a weather API.</li>
+                            <li>The API receives it, checks permissions, and sends it to the weather database/server.</li>
+                            <li>The server prepares the data (like temperature, forecast) and sends it back through the API.</li>
+                            <li>Your app receives the result and shows it to you — all within seconds!</li>
+                        </ol>
+                    
+                        <h3>📚 Common API Terms Explained</h3>
+                        <ul>
+                            <li><strong>Endpoint:</strong> A specific URL where an API provides access to a certain resource (like /users or /weather/today).</li>
+                            <li><strong>Request:</strong> When your app asks for something from the API (usually using HTTP methods like GET, POST).</li>
+                            <li><strong>Response:</strong> The data the API sends back (like JSON or XML format).</li>
+                            <li><strong>API Key:</strong> A unique code used to identify and authenticate your app using the API.</li>
+                            <li><strong>Rate Limit:</strong> The limit on how many times you can call the API in a given time (e.g., 1000 requests/day).</li>
+                        </ul>
+                    
+                        <h3>💡 Why APIs are Important</h3>
+                        <ul>
+                            <li><strong>Saves Time:</strong> Developers don’t need to build everything from zero. APIs provide ready-made tools and services.</li>
+                            <li><strong>Encourages Reusability:</strong> APIs can be used in multiple apps — for example, a payment API used in 1000s of websites.</li>
+                            <li><strong>Connects the World:</strong> APIs allow apps, websites, and devices to work together — like your smartwatch syncing with your phone.</li>
+                            <li><strong>Security & Access Control:</strong> APIs can restrict what data is shared and who can access it — using API keys, OAuth, etc.</li>
+                            <li><strong>Improves User Experience:</strong> APIs make apps smarter, faster, and more interactive — like live chats, maps, translations, etc.</li>
+                        </ul>
+                    
+                        <h3>🔍 Types of APIs</h3>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>REST API</td>
+                                    <td>Most popular type. Works over HTTP using simple methods like GET (read), POST (create), PUT (update), DELETE (remove).</td>
+                                </tr>
+                                <tr>
+                                    <td>SOAP API</td>
+                                    <td>Uses XML for communication. More strict and secure. Often used in banking and enterprise systems.</td>
+                                </tr>
+                                <tr>
+                                    <td>GraphQL API</td>
+                                    <td>Created by Facebook. Lets clients ask for specific data — more flexible and efficient than REST.</td>
+                                </tr>
+                                <tr>
+                                    <td>Web APIs</td>
+                                    <td>APIs designed to work over the web — such as browser-based or mobile apps.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                        <h3>🌐 Real-World Uses of APIs</h3>
+                        <ul>
+                            <li><strong>Weather Apps:</strong> Use weather APIs to show current conditions, forecasts, air quality, etc.</li>
+                            <li><strong>Login Systems:</strong> "Login with Google/Facebook" uses OAuth APIs to authenticate users safely.</li>
+                            <li><strong>Online Payments:</strong> E-commerce sites use APIs like Stripe, Razorpay, or PayPal for secure transactions.</li>
+                            <li><strong>Maps & Navigation:</strong> Apps like Uber or Zomato use Google Maps API to show routes and locations.</li>
+                            <li><strong>Social Media Apps:</strong> Use APIs to fetch posts, likes, comments, and profile data from platforms like Instagram, Twitter, etc.</li>
+                            <li><strong>Chat & Messaging:</strong> Apps like WhatsApp Web or live chats on websites use APIs to send and receive messages in real-time.</li>
+                        </ul>
+                    
+                        <h3>👨‍💻 How Developers Use APIs</h3>
+                        <p>APIs are used by developers every day. They write code to connect their app with an API, send requests, receive responses, and use that data in their app — for example, showing user details, products, prices, or maps.</p>
+                        <p>Most APIs come with official documentation that explains how to use them, what endpoints are available, and how authentication works.</p>
+                    
+                    </section>
+                                    </div>
+
+                <!-- usermanagment -->
+                <section id="team" class="section">
+                    <h2><i class="fas fa-users"></i> Our Team</h2>
+                    <div class="team-section">
+                        
+                        <!-- Jethanand -->
+<div class="team-card">
+    <div class="team-member-img">
+        <img src="assets/jethanand.png" alt="Jethanand Image">
+    </div>
+    <h3>Jethanand</h3>
+    <p class="role">Backend Developer</p>
+    <p>Skilled in Node.js, Express, and MongoDB. Handles server logic and API management.</p>
+    <div class="social-links">
+        <a href="https://github.com/jethanandj52" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jethanand-malhi-319ba9212/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/jethanand.malhi.94" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+<!-- Jai Parkash -->
+<div class="team-card">
+    <div class="team-member-img">
+        <img src="assets/image.png" alt="Jai Parkash Image">
+    </div>
+    <h3>Jai Parkash</h3>
+    <p class="role">Frontend Designer</p>
+    <p>Expert in HTML, CSS, and JavaScript. Focused on UI/UX and responsive design.</p>
+    <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+<!-- Dileep Singh -->
+<div class="team-card">
+    <div class="team-member-img">
+        <img src="assets/dileep.png" alt="Dileep Singh Image">
+    </div>
+    <h3>Dileep Singh</h3>
+    <p class="role">Documentation & Integration</p>
+    <p>Organized documentation expert skilled in JavaScript and Firebase. Manages API integration and clear technical writing.</p>
+
+    <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+                         
+                
+                    </div>
+                </section>
+                
+            <section id="weatherAPI">
+                <div class="category">
+                    <h2 id="weather">Weather API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather" selected>Weather</option>
+    <option value="news">News</option>
+    <option value="communication">Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="weatherApiContainer" class="categoryDisplay"></div>
+            </section>
+
+            <section id="newsAPI">
+               
+                <div class="category">
+                    <h2 id="weather">News API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news" selected>News</option>
+    <option value="communication">Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="newsApiContainer" class="categoryDisplay"></div>
+
+            </section>
+
+            <section id="paymentAPI">
+                <div class="category">
+                    <h2 id="weather">Payment API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news">News</option>
+    <option value="communication">Communication</option>
+    <option value="payment" selected>Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="paymentApiContainer" class="categoryDisplay"></div>
+
+            </section>
+
+            <section id="communicationAPI">
+                <div class="category">
+                    <h2 id="weather">Communication API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news">News</option>
+    <option value="communication" selected>Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="communicationApiContainer" class="categoryDisplay"></div>
+
+            </section>
+
+            <section id="entertainmentAPI">
+                <div class="category">
+                    <h2 id="weather">Entertainment API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news">News</option>
+    <option value="communication">Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment" selected>Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="entertainmentApiContainer" class="categoryDisplay"></div>
+
+            </section>
+            <section id="developmentAPI">
+                <div class="category">
+                    <h2 id="weather">Development API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news">News</option>
+    <option value="communication">Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development" selected>Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="developmentApiContainer" class="categoryDisplay"></div>
+
+            </section>
+
+            <section id="geoLocationAPI">
+                <div class="category">
+                    <h2 id="weather">Geolocation API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news">News</option>
+    <option value="communication">Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation" selected>Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all">All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="geoApiContainer" class="categoryDisplay"></div>
+
+            </section>
+
+            <section id="allAPI">
+                <div class="category">
+                    <h2 id="weather">All API'S</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="weather">Weather</option>
+    <option value="news">News</option>
+    <option value="communication">Communication</option>
+    <option value="payment">Payment</option>
+    <option value="geoLocation">Geolocation</option>
+    <option value="entertainment">Entertainment</option>
+    <option value="development">Development</option>
+    <option value="all" selected>All API</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                <div id="allApiContainer" class="categoryDisplay"></div>
+
+            </section>
+                <!-- About Section -->
+                <section id="about" class="section about-section modern-about">
+                    <div class="about-card">
+                      <h2 class="about-title"><i class="fas fa-info-circle"></i> About APIverse</h2>
+                      <p class="about-desc">
+                        APIverse is an all-in-one platform made to help developers work easily with APIs. Whether you are building a small app or a full system, APIverse gives you all the tools you need to find, test, understand, and integrate APIs smoothly. It saves time, reduces errors, and improves the development experience.
+                      </p>
+                  
+                      <h3 class="about-section-title">What is APIverse?</h3>
+                      <p class="about-section-desc">
+                        APIverse is designed like a smart assistant for developers. Instead of searching for APIs everywhere, dealing with poor documentation, or struggling with integrations — APIverse brings everything to one place. It helps you:
+                      </p>
+                  
+                      <ul class="about-list">
+                        <li><b>Find Trusted APIs:</b> Browse a library of useful, verified APIs with ratings, tags, and categories.</li>
+                        <li><b>Read Clean Docs:</b> Access clear and structured API documentation, with real examples and how-to guides.</li>
+                        <li><b>Integrate Easily:</b> Use ready-made code snippets, SDKs, and live testing tools to speed up development.</li>
+                        <li><b>Stay Secure:</b> Manage API keys, set limits, and monitor requests to keep your app safe.</li>
+                      </ul>
+                  
+                      <h3 class="about-section-title">Key Features</h3>
+                      <ul class="about-list">
+                        <li><b>Live Monitoring:</b> Check API performance, speed, errors, and usage in real-time.</li>
+                        <li><b>Version Control:</b> Keep track of all API versions and make sure your app runs smoothly with updates.</li>
+                        <li><b>Analytics:</b> Get clear charts and reports on how your APIs are used, by whom, and how often.</li>
+                        <li><b>Built-in Testing:</b> Test APIs inside the platform without writing extra code or using third-party tools.</li>
+                      </ul>
+                  
+                      <h3 class="about-section-title">Why Developers Love APIverse</h3>
+                      <ul class="about-list">
+                        <li>Speeds up API development and integration process</li>
+                        <li>Reduces confusion with clean documentation and examples</li>
+                        <li>Makes APIs more secure and manageable</li>
+                        <li>Helps students, freelancers, and professional developers equally</li>
+                      </ul>
+                  
+                      <div class="about-impact-desc">
+                        APIverse is not just a tool — it’s a full solution for modern developers. We’ve built it by understanding the real struggles developers face when working with APIs. Whether you're working on college projects, startup apps, or enterprise systems — APIverse gives you the tools to build faster, better, and smarter.
+                      </div>
+                    </div>
+                  </section>
+                  
+                <!-- Contact Section -->
+                <section id="contact" style="display: none;">
+                    <div>
+
+                        <h2><i class="fas fa-contact-book"></i> Contact Us</h2>
+                        <div class="section contact-section">
+                            <div class="contact-left">
+                                <h2><i class="fas fa-envelope"></i> <span>Contact Us</span></h2>
+                                <p class="contact-desc">Have questions or feedback? We'd love to hear from you!</p>
+                                <div class="contact-card">
+                                    <div class="contact-card-item">
+                                        <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+                                        <div>
+                                            <div class="contact-card-title">Email</div>
+                                            <div class="contact-card-value">apiverse@gmail.com</div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-card-item">
+                                        <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+                                        <div>
+                                            <div class="contact-card-title">Phone</div>
+                                            <div class="contact-card-value">+92 304 2507846</div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-card-item">
+                                        <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                        <div>
+                                            <div class="contact-card-title">Address</div>
+                                            <div class="contact-card-value">Benazir Bhutto Shaheed University, Lyari, Karachi</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contact-social">
+                                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                            <div class="contact-right">
+                                <h2 class="contact-form-title">Send us a Message</h2>
+                                <form class="contact-form">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" required>
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="4" required></textarea>
+                                    <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- analytics -->
+               <div>
+ 
+                <div class="footer">
+                    <div class="footer-content">
+                        <div class="footer-main">
+                            <div class="footer-logo">
+                                <img src="assets/title-logo.png" alt="Apiverse Logo" class="logo-img" onerror="this.style.display='none'">
+                                <h2>Apiverse</h2>
+                            </div>
+                            <p class="footer-description">Your gateway to the world of APIs. Discover, integrate, and innovate.</p>
+                        </div>
+    
+    
+    
+                        <div class="footer-links">
+                            <div class="footer-section">
+                                <h3>Quick Links</h3>
+                                <ul>
+                                    <li><a href="#overview" onclick="doc()">Home</a></li>
+                                    <li><a href="#api-management" onclick="apis()">API </a></li>
+                                    <li><a href="#user-management" onclick="team()">Team</a></li>
+                                    <li><a href="#analytics" onclick="information()">About</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h3>Resources</h3>
+                                <ul>
+                                    <li><a href="#tutorials">Tutorials</a></li>
+                                    <li><a href="#blog">Blog</a></li>
+                                    <li><a href="#support">Support</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h3>Connect With Us</h3>
+                                <div class="social-links">
+                                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                                <div class="contact-info">
+                                    <p><i class="fas fa-envelope"></i> support@apiverse.com</p>
+                                    <p><i class="fas fa-phone"></i> +923042507846</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>© 2025 Apiverse. All rights reserved.</p>
+                        <div class="footer-legal">
+                            <a href="#privacy">Privacy Policy</a>
+                            <a href="#terms">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+
+    <section id="popup">
+        <div id="addAPI">
+            <div class="addApiName">
+                <h1>Add API</h1>
+                <i class="fa fa-xmark" onclick="cancel()"></i>
+            </div>
+            <div class="addApiInput">
+                <!-- Basic API Information -->
+                <h3>Basic Information</h3>
+                <label for="apiName">API Name</label>
+                <input type="text" id="apiName" placeholder="e.g. OpenWeather API" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" cols="30" rows="5" placeholder="Short description about the API" required></textarea>
+
+                <label for="language">Language (comma-separated)</label>
+                <input type="text" id="language" placeholder="e.g. JavaScript, Python">
+
+                <label for="category">Category</label>
+                <select id="category" required>
+                  <option selected disabled>Select Category</option>
+                  <option value="Weather">Weather</option>
+                  <option value="News">News</option>
+                  <option value="Payment">Payment</option>
+                  <option value="Communication">Communication</option>
+                  <option value="Geolocation">Geolocation</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Development">Development</option>
+                </select>
+
+                <label for="security">Security</label>
+                <input type="text" id="security" placeholder="e.g. No known vulnerabilities" required>
+
+                <label for="license">License</label>
+                <input type="text" id="license" placeholder="e.g. MIT" required>
+
+                <!-- Documentation Section -->
+                <h3>Documentation</h3>
+                <label for="docTitle">Documentation Title</label>
+                <input type="text" id="docTitle" placeholder="e.g. OpenWeatherMap API Documentation" required>
+
+                <label for="docDescription">Documentation Description</label>
+                <textarea id="docDescription" cols="30" rows="5" placeholder="Detailed description about the API documentation" required></textarea>
+
+                <label for="endpoints">Endpoints</label>
+                <textarea id="endpoints" cols="30" rows="5" placeholder="List of available endpoints and their descriptions" required></textarea>
+
+                <label for="parameters">Parameters</label>
+                <textarea id="parameters" cols="30" rows="5" placeholder="List of parameters and their descriptions" required></textarea>
+
+                <label for="examples">Documentation Examples</label>
+                <textarea id="examples" cols="30" rows="5" placeholder="Code examples for different languages" required></textarea>
+
+                <!-- Integration Section -->
+                <h3>Integration</h3>
+                <label for="integrationTitle">Integration Title</label>
+                <input type="text" id="integrationTitle" placeholder="e.g. OpenWeatherMap Integration" required>
+
+                <label for="integrationDescription">Integration Description</label>
+                <textarea id="integrationDescription" cols="30" rows="5" placeholder="Description of the integration process" required></textarea>
+
+                <label for="setupSteps">Setup Steps</label>
+                <textarea id="setupSteps" cols="30" rows="5" placeholder="Step-by-step setup instructions" required></textarea>
+
+                <label for="codeExamples">Integration Code Examples</label>
+                <textarea id="codeExamples" cols="30" rows="5" placeholder="Code examples for different languages" required></textarea>
+
+                <button id="addApiBtn" onclick="addData()">Add API</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Popup -->
+    <section id="docPopup" style="display: none;">
+        <div id="addDoc">
+            <div class="addApiName">
+                <h1>Add Documentation</h1>
+                <i class="fa fa-xmark" onclick="closeDocPopup()"></i>
+            </div>
+            <div class="addApiInput">
+                <label for="docTitle">Documentation Title</label>
+                <input type="text" id="docTitle" placeholder="e.g. OpenWeatherMap API Documentation" required>
+
+                <label for="docDescription">Description</label>
+                <textarea id="docDescription" cols="30" rows="5" placeholder="Detailed description about the API documentation" required></textarea>
+
+                <label for="endpoints">Endpoints</label>
+                <textarea id="endpoints" cols="30" rows="5" placeholder="List of available endpoints and their descriptions" required></textarea>
+
+                <label for="parameters">Parameters</label>
+                <textarea id="parameters" cols="30" rows="5" placeholder="List of parameters and their descriptions" required></textarea>
+
+                <label for="examples">Examples</label>
+                <textarea id="examples" cols="30" rows="5" placeholder="Code examples for different languages" required></textarea>
+
+                <button id="addDocBtn" onclick="addDocumentation()">Add Documentation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Popup -->
+    <section id="integrationPopup" style="display: none;">
+        <div id="addIntegration">
+            <div class="addApiName">
+                <h1>Add Integration Code</h1>
+                <i class="fa fa-xmark" onclick="closeIntegrationPopup()"></i>
+            </div>
+            <div class="addApiInput">
+                <label for="integrationTitle">Integration Title</label>
+                <input type="text" id="integrationTitle" placeholder="e.g. OpenWeatherMap Integration" required>
+
+                <label for="integrationDescription">Description</label>
+                <textarea id="integrationDescription" cols="30" rows="5" placeholder="Description of the integration process" required></textarea>
+
+                <label for="setupSteps">Setup Steps</label>
+                <textarea id="setupSteps" cols="30" rows="5" placeholder="Step-by-step setup instructions" required></textarea>
+
+                <label for="codeExamples">Code Examples</label>
+                <textarea id="codeExamples" cols="30" rows="5" placeholder="Code examples for different languages" required></textarea>
+
+                <button id="addIntegrationBtn" onclick="addIntegration()">Add Integration</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notificationContainer">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button onclick="clearNotifications()">Clear All</button>
+        </div>
+        <div class="notification-list" id="notificationList"></div>
+    </div>
+
+    <div id="userInfo" style="display: none;">
+        <div class="usersIcon">
+            <div>
+                <i class="fa fa-user-circle"></i>
+            </div>
+            <div>
+                <div id="userName">Jethanand</div>
+                <div id="userEmail">Email@gmail.com</div>
+            </div>
+
+
+
+        </div>
+
+        <div class="otherInfo">
+            <div class="userIcon">
+                <i class="fa fa-cog"></i>
+                <span class="userRole">Setting</span>
+            </div>
+
+            <div class="userIcon">
+                <i class="fa fa-info-circle"></i>
+                <span class="userRole">Help</span>
+            </div>
+
+
+            <div id="logout">
+                <div onclick="logoutUser()"><i class="fa fa-sign-out"></i>Logout</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="dashboard.js"></script>
+    <script src="home.js"></script>
+
+
+
+
+
+</body>
+
+</html>
