@@ -339,11 +339,12 @@ ul,ol {
 
 #apiManagment,
 #userManagment,
-#analytics {
+#analytics,#libraryManagment  {
     display: none;
+
 }
 
-#apiManagment button {
+#apiManagment button, #libraryManagment button {
     font-size: 19px;
     padding: 5px 10px;
     background-color: #043b7d;

@@ -79,6 +79,10 @@ window.overview = function overview() {
 
     let analytics = document.getElementById("analytics")
     analytics.style.display = "none"
+
+
+    let library= document.getElementById("libraryManagment")
+    library.style.display = "none"
 }
 
 window.apiManagment = function apiManagment() {
@@ -93,6 +97,9 @@ window.apiManagment = function apiManagment() {
 
     let analytics = document.getElementById("analytics")
     analytics.style.display = "none"
+
+      let library= document.getElementById("libraryManagment")
+    library.style.display = "none"
 }
 
 window.userManagment = function userManagment() {
@@ -107,6 +114,9 @@ window.userManagment = function userManagment() {
 
     let analytics = document.getElementById("analytics")
     analytics.style.display = "none"
+
+      let library= document.getElementById("libraryManagment")
+    library.style.display = "none"
 }
 
 window.analytics = function analytics() {
@@ -121,8 +131,28 @@ window.analytics = function analytics() {
 
     let analytics = document.getElementById("analytics")
     analytics.style.display = "block"
+
+      let library= document.getElementById("libraryManagment")
+    library.style.display = "none"
 }
 
+
+window.libraries = function libraries() {
+    let api = document.getElementById("apiManagment")
+    api.style.display = "none"
+
+    let overview = document.getElementById("overview")
+    overview.style.display = "none"
+
+    let userManagment = document.getElementById("userManagment")
+    userManagment.style.display = "none"
+
+    let analytics = document.getElementById("analytics")
+    analytics.style.display = "none"
+
+      let library= document.getElementById("libraryManagment")
+    library.style.display = "block"
+}
 window.backWindow = function backWindow() {
     window.location.href = "home.html"
 }
@@ -132,6 +162,12 @@ window.addAPI = function addAPI() {
     popup.style.display = "flex"
 }
 
+window.addLibrary = function addLibrary() {
+    let popup = document.getElementById("popup")
+    popup.style.display = "flex"
+     document.getElementById("addAPI").style.display="none"
+     document.getElementById("addLibrary").style.display="block"
+}
 window.cancel = function cancel() {
     let popup = document.getElementById("popup")
     popup.style.display = "none"
