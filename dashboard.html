@@ -43,13 +43,14 @@
                             <i class="fas fa-home"></i>
                             <div class="name">Overview</div>
                         </div>
-                        <div class="navigation2" onclick="apiManagment()">
+                        <div class="navigation2" onclick="api()">
                             <i class="fas fa-plug"></i>
                             <div class="name">API Managment</div>
                         </div>
-                        <div class="navigation2" onclick="libraries()">
-                            <i class="fas fa-cube"></i>
-                            <div class="name">Library Managment</div>
+                        
+                          <div class="navigation2" onclick="libraryManagment()">
+                            <i class="fas fa-box"></i>
+                            <div class="name">library Managment</div>
                         </div>
                         <div class="navigation2" onclick="userManagment()">
                             <i class="fas fa-users"></i>
@@ -120,18 +121,19 @@
 
                 </div>
 <!-- library  -->
-                <div id="libraryManagment">
+  <div id="libraries" style="display: none;">
                     <div class=" overview">
-                        <i class="fas fa-cube"></i>
+                        <i class="fas fa-box"></i>
                         <div class="name">Library Management</div>
                     </div>
 
-                    <div class="apiAdd">
+                    <div class="libraryAdd">
                         <button onclick="addLibrary()">Add Library</button>
                     </div>
-                    <div id="apiCardContainer"></div>
+                    <div id="libraryCardContainer"></div>
 
                 </div>
+               
                 <!-- usermanagment -->
                 <div id="userManagment">
                     <div class=" overview">
@@ -143,7 +145,10 @@
                 </div>
                 <!-- analytics -->
                 <div class="analytics" id="analytics">
-                    <h2>Analytics</h2>
+                 <div class=" overview">
+                        <i class="fas fa-chart-column"></i>
+                        <div class="name">Analysis</div>
+                    </div>
                     <div class="charts-container">
                         <!-- Bar Chart: Top APIs by Usage -->
                         <div class="chart-box">
@@ -285,7 +290,73 @@
             </div>
         </div>
 
-        
+     <div id="addLibraries">
+            <div class="addLibraryName">
+                <h1>Add Library</h1>
+                <i class="fa fa-xmark" onclick="cancel()"></i>
+            </div>
+            <div class="addApiInput">
+  <!-- Basic Library Information -->
+  <h3>Library Information</h3>
+
+  <label for="libName">Library Name</label>
+  <input type="text" id="libName" placeholder="e.g. Axios" required />
+
+  <label for="libDescription">Description</label>
+  <textarea id="libDescription" cols="30" rows="5" placeholder="Short description of the library" required></textarea>
+
+  <label for="libLanguage">Language (comma-separated)</label>
+  <input type="text" id="libLanguage" placeholder="e.g. JavaScript, TypeScript" />
+
+  <label for="libCategory">Category</label>
+  <select id="libCategory" required>
+    <option selected disabled>Select Category</option>
+    <option value="HTTP">HTTP</option>
+    <option value="Database">Database</option>
+    <option value="UI">UI</option>
+    <option value="Validation">Validation</option>
+    <option value="Authentication">Authentication</option>
+    <option value="Testing">Testing</option>
+    <option value="Utilities">Utilities</option>
+  </select>
+
+  <label for="libVersion">Version</label>
+  <input type="text" id="libVersion" placeholder="e.g. 1.4.0" required />
+
+  <label for="libLicense">License</label>
+  <input type="text" id="libLicense" placeholder="e.g. MIT" />
+
+  <label for="libAuthor">Author</label>
+  <input type="text" id="libAuthor" placeholder="e.g. Matt Zabriskie" />
+
+  <label for="libTags">Tags (comma-separated)</label>
+  <input type="text" id="libTags" placeholder="e.g. HTTP, client, axios" />
+
+  <label for="libUrl">Library URL</label>
+  <input type="url" id="libUrl" placeholder="https://github.com/axios/axios" required />
+
+  <label for="libDocUrl">Documentation URL</label>
+  <input type="url" id="libDocUrl" placeholder="https://axios-http.com/docs/intro" />
+
+  <!-- Documentation Section (Similar to API) -->
+  <h3>Library Documentation</h3>
+
+  <label for="libDocDescription">Documentation Description</label>
+  <textarea id="libDocDescription" cols="30" rows="5" placeholder="Detailed description of the library documentation" required></textarea>
+
+  <label for="libEndpoints">Endpoints</label>
+  <textarea id="libEndpoints" cols="30" rows="5" placeholder="List of available methods and their descriptions" required></textarea>
+
+  <label for="libExamples">Library Usage Examples</label>
+  <textarea id="libExamples" cols="30" rows="5" placeholder="Code examples for different use cases" required></textarea>
+
+  <label for="libIntegration">Library Integration</label>
+  <textarea id="libIntegration" cols="30" rows="5" placeholder="How to integrate the library into projects" required></textarea>
+
+  <button id="addLibraryBtn" onclick="addingLibrary()">Add Library</button>
+</div>
+
+        </div>
         
     </section>
 
@@ -387,7 +458,7 @@
 
 
 
-    <script type="module" src="dashboard.js"></script>
+    <script type="module" src="dashboard.js" defer></script>
 
 
 

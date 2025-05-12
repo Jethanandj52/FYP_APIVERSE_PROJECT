@@ -339,12 +339,12 @@ ul,ol {
 
 #apiManagment,
 #userManagment,
-#analytics,#libraryManagment  {
+#analytics {
     display: none;
 
 }
 
-#apiManagment button, #libraryManagment button {
+#apiManagment button, #libraries button {
     font-size: 19px;
     padding: 5px 10px;
     background-color: #043b7d;
@@ -357,13 +357,13 @@ ul,ol {
     margin-left: 50px;
 }
 
-#apiManagment button:hover {
+#apiManagment button:hover,#libraries button:hover {
     background-color: #0b4f6f;
     transform: translateY(-10%);
     transition: all 0.3s ease-in-out;
 }
 
-#apiManagment button:active {
+#apiManagment button:active,#libraries button:active {
     transform: scale(0.8);
 }
 
@@ -382,7 +382,7 @@ ul,ol {
     align-items: center;
 }
 
-#addAPI {
+#addAPI ,#addLibraries{
     width: 50%;
     height: 90vh;
     background-color: #1e293b;
@@ -391,14 +391,14 @@ ul,ol {
     overflow-y: scroll;
 }
 
-#addAPI .addApiName {
+#addAPI .addApiName,#addLibraries .addLibraryName {
     display: flex;
     justify-content: space-between;
     padding: 20px 40px;
     border-bottom: 1px solid #60a5fa;
 }
 
-#addAPI i {
+#addAPI i ,#addLibraries i {
     font-size: 20px;
     cursor: pointer;
     color: red;

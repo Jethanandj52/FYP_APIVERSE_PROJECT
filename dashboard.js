@@ -66,93 +66,49 @@ new Chart(ctx, {
         }
     }
 });
-
-window.overview = function overview() {
-    let api = document.getElementById("apiManagment")
-    api.style.display = "none"
-
-    let overview = document.getElementById("overview")
-    overview.style.display = "block"
-
-    let userManagment = document.getElementById("userManagment")
-    userManagment.style.display = "none"
-
-    let analytics = document.getElementById("analytics")
-    analytics.style.display = "none"
-
-
-    let library= document.getElementById("libraryManagment")
-    library.style.display = "none"
+// Common function to hide all sections
+function hideAllSections() {
+    document.getElementById("overview").style.display = "none";
+    document.getElementById("apiManagment").style.display = "none";
+    document.getElementById("userManagment").style.display = "none";
+    document.getElementById("analytics").style.display = "none";
+    document.getElementById("libraries").style.display = "none";
 }
 
-window.apiManagment = function apiManagment() {
-    let api = document.getElementById("apiManagment")
-    api.style.display = "block"
+// Overview function
+window.overview = function () {
+    hideAllSections();
+    document.getElementById("overview").style.display = "block";
+};
 
-    let overview = document.getElementById("overview")
-    overview.style.display = "none"
+// API Management function
+window.api = function () {
+    hideAllSections();
+    document.getElementById("apiManagment").style.display = "block";
+  
+    console.log("helo");
+    
+};
 
-    let userManagment = document.getElementById("userManagment")
-    userManagment.style.display = "none"
+// User Management function
+window.userManagment = function () {
+    hideAllSections();
+    document.getElementById("userManagment").style.display = "block";
+};
 
-    let analytics = document.getElementById("analytics")
-    analytics.style.display = "none"
+// Analytics function
+window.analytics = function () {
+    hideAllSections();
+    document.getElementById("analytics").style.display = "block";
+};
 
-      let library= document.getElementById("libraryManagment")
-    library.style.display = "none"
-}
+// Library Management function
+window.libraryManagment = function () {
+    hideAllSections();
+    document.getElementById("libraries").style.display = "block";
+    console.log("Library Section Opened");
+};
 
-window.userManagment = function userManagment() {
-    let api = document.getElementById("apiManagment")
-    api.style.display = "none"
-
-    let overview = document.getElementById("overview")
-    overview.style.display = "none"
-
-    let userManagment = document.getElementById("userManagment")
-    userManagment.style.display = "block"
-
-    let analytics = document.getElementById("analytics")
-    analytics.style.display = "none"
-
-      let library= document.getElementById("libraryManagment")
-    library.style.display = "none"
-}
-
-window.analytics = function analytics() {
-    let api = document.getElementById("apiManagment")
-    api.style.display = "none"
-
-    let overview = document.getElementById("overview")
-    overview.style.display = "none"
-
-    let userManagment = document.getElementById("userManagment")
-    userManagment.style.display = "none"
-
-    let analytics = document.getElementById("analytics")
-    analytics.style.display = "block"
-
-      let library= document.getElementById("libraryManagment")
-    library.style.display = "none"
-}
-
-
-window.libraries = function libraries() {
-    let api = document.getElementById("apiManagment")
-    api.style.display = "none"
-
-    let overview = document.getElementById("overview")
-    overview.style.display = "none"
-
-    let userManagment = document.getElementById("userManagment")
-    userManagment.style.display = "none"
-
-    let analytics = document.getElementById("analytics")
-    analytics.style.display = "none"
-
-      let library= document.getElementById("libraryManagment")
-    library.style.display = "block"
-}
 window.backWindow = function backWindow() {
     window.location.href = "home.html"
 }
@@ -160,14 +116,15 @@ window.backWindow = function backWindow() {
 window.addAPI = function addAPI() {
     let popup = document.getElementById("popup")
     popup.style.display = "flex"
+    document.getElementById("addliraries").style.display="none"
 }
 
-window.addLibrary = function addLibrary() {
+ window.addLibrary = function (){
     let popup = document.getElementById("popup")
     popup.style.display = "flex"
-     document.getElementById("addAPI").style.display="none"
-     document.getElementById("addLibrary").style.display="block"
-}
+
+    document.getElementById("addAPI").style.display="none"
+ }
 window.cancel = function cancel() {
     let popup = document.getElementById("popup")
     popup.style.display = "none"
@@ -271,6 +228,9 @@ window.addData = async function addData() {
         alert("Failed to add API.");
     }
 };
+
+// Function to add library data to Firestore
+ 
 
 // Modified fetchData function to add delete button
 async function fetchData(dashboardContainer) {
