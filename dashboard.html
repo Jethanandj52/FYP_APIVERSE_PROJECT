@@ -78,22 +78,33 @@
                     </div>
 
                     <div class="mainCard">
-                        <div class="cards">
-                            <div class="cardName"  >Total APIs</div>
-                            <div id="apiCountDiv"></div>
 
-                        </div>
-
-                        <div class="cards">
+                         <div class="cards cardHover"  onclick="userManagment()">
                             <div class="cardName"  >Active Users</div>
                             <div id="userCount">0</div>
                         </div>
+                        <div class="cards cardHover"  onclick="apiManagment()" >
+                            <div class="cardName">Total APIs</div>
+                            <div id="apiCountDiv"></div>
+
+                        </div>
+                          <div class="cards cardHover" onclick="libraryManagment()">
+                            <div class="cardName"  >Total Libraries</div>
+                            <div class="cardCount" id="libraryCountDiv"></div>
+
+                        </div>
+
+                       
 
                         <div class="cards">
                             <div class="cardName">API Calls Today </div>
                             <div class="cardCount" id="apiCall">0</div>
                         </div>
 
+                          <div class="cards">
+                            <div class="cardName">Library Calls Today </div>
+                            <div class="cardCount" id="libraryCall">0</div>
+                        </div>
                         <div class="cards">
                             <div class="cardName">Security Alerts</div>
                             <div class="cardCount" id="apiSecurity">0</div>
@@ -130,7 +141,9 @@
                     <div class="libraryAdd">
                         <button onclick="addLibrary()">Add Library</button>
                     </div>
-                    <div id="libraryCardContainer"></div>
+                    <div id="libraryCardContainer">
+
+                    </div>
 
                 </div>
                
@@ -220,7 +233,7 @@
     </div>
 
     <section id="popup">
-        <div id="addAPI">
+        <div id="addAPI" style="display: none;">
             <div class="addApiName">
                 <h1>Add API</h1>
                 <i class="fa fa-xmark" onclick="cancel()"></i>
@@ -290,81 +303,70 @@
             </div>
         </div>
 
-     <div id="addLibraries">
-            <div class="addLibraryName">
-                <h1>Add Library</h1>
-                <i class="fa fa-xmark" onclick="cancel()"></i>
-            </div>
-            <div class="addApiInput">
-  <!-- Basic Library Information -->
-  <h3>Library Information</h3>
+     <div id="addLibraries" style="display: none;">
+  <div class="addLibraryName">
+    <h1>Add Library</h1>
+    <i class="fa fa-xmark" onclick="cancel()"></i>
+  </div>
+  <div class="addApiInput">
+    <!-- Library Information -->
+    <h3>Library Information</h3>
 
-  <label for="libName">Library Name</label>
-  <input type="text" id="libName" placeholder="e.g. Axios" required />
+    <label for="libName">Library Name</label>
+    <input type="text" id="libName" placeholder="e.g. Axios" required />
 
-  <label for="libDescription">Description</label>
-  <textarea id="libDescription" cols="30" rows="5" placeholder="Short description of the library" required></textarea>
+    <label for="libDescription">Description</label>
+    <textarea id="libDescription" rows="4" placeholder="Short description of the library" required></textarea>
 
-  <label for="libLanguage">Language (comma-separated)</label>
-  <input type="text" id="libLanguage" placeholder="e.g. JavaScript, TypeScript" />
+    <label for="libLanguage">Language</label>
+    <input type="text" id="libLanguage" placeholder="e.g. JavaScript, Python" required />
 
-  <label for="libCategory">Category</label>
-  <select id="libCategory" required>
-    <option selected disabled>Select Category</option>
-    <option value="HTTP">HTTP</option>
-    <option value="Database">Database</option>
-    <option value="UI">UI</option>
-    <option value="Validation">Validation</option>
-    <option value="Authentication">Authentication</option>
-    <option value="Testing">Testing</option>
-    <option value="Utilities">Utilities</option>
-  </select>
+    <label for="libCategory">Category</label>
+    <select id="libCategory" required>
+      <option selected disabled>Select Category</option>
+      <option value="UI">UI</option>
+      <option value="Backend">Backend</option>
+      <option value="Networking">Networking</option>
+      <option value="Data Processing">Data Processing</option>
+      <option value="Testing">Testing</option>
+      <option value="Utilities">Utilities</option>
+    </select>
 
-  <label for="libVersion">Version</label>
-  <input type="text" id="libVersion" placeholder="e.g. 1.4.0" required />
+    <label for="libVersion">Version</label>
+    <input type="text" id="libVersion" placeholder="e.g. 1.4.0" required />
 
-  <label for="libLicense">License</label>
-  <input type="text" id="libLicense" placeholder="e.g. MIT" />
+    <label for="libLicense">License</label>
+    <input type="text" id="libLicense" placeholder="e.g. MIT" required />
 
-  <label for="libAuthor">Author</label>
-  <input type="text" id="libAuthor" placeholder="e.g. Matt Zabriskie" />
+    <label for="libRepo">Library Repo URL</label>
+    <input type="url" id="libRepo" placeholder="e.g. https://github.com/axios/axios" required />
 
-  <label for="libTags">Tags (comma-separated)</label>
-  <input type="text" id="libTags" placeholder="e.g. HTTP, client, axios" />
+    <label for="libDocUrl">Documentation URL</label>
+    <input type="url" id="libDocUrl" placeholder="e.g. https://axios-http.com/docs" required />
 
-  <label for="libUrl">Library URL</label>
-  <input type="url" id="libUrl" placeholder="https://github.com/axios/axios" required />
+    <!-- Documentation & Usage -->
+    <h3>Documentation & Usage</h3>
 
-  <label for="libDocUrl">Documentation URL</label>
-  <input type="url" id="libDocUrl" placeholder="https://axios-http.com/docs/intro" />
+    <label for="libInstallation">Installation Command</label>
+    <textarea id="libInstallation" rows="2" placeholder="e.g. npm install axios" required></textarea>
 
-  <!-- Documentation Section (Similar to API) -->
-  <h3>Library Documentation</h3>
+    <label for="libUsage">Code Usage Examples</label>
+    <textarea id="libUsage" rows="5" placeholder="Code examples showing how to use the library" required></textarea>
 
-  <label for="libDocDescription">Documentation Description</label>
-  <textarea id="libDocDescription" cols="30" rows="5" placeholder="Detailed description of the library documentation" required></textarea>
+    <label for="libIntegration">Integration Steps</label>
+    <textarea id="libIntegration" rows="5" placeholder="Steps to integrate the library in a project" required></textarea>
 
-  <label for="libEndpoints">Endpoints</label>
-  <textarea id="libEndpoints" cols="30" rows="5" placeholder="List of available methods and their descriptions" required></textarea>
-
-  <label for="libExamples">Library Usage Examples</label>
-  <textarea id="libExamples" cols="30" rows="5" placeholder="Code examples for different use cases" required></textarea>
-
-  <label for="libIntegration">Library Integration</label>
-  <textarea id="libIntegration" cols="30" rows="5" placeholder="How to integrate the library into projects" required></textarea>
-
-  <button id="addLibraryBtn" onclick="addingLibrary()">Add Library</button>
+    <button id="addLibraryBtn" onclick="addingLibrary()">Add Library</button>
+  </div>
 </div>
 
-        </div>
-        
     </section>
 
  
 
     <!-- Documentation Popup -->
     <section id="docPopup">
-        <div id="addDoc">
+        <div id="addDoc" style="display: none;">
             <div class="addApiName">
                 <h1>Add Documentation</h1>
                 <i class="fa fa-xmark" onclick="closeDocPopup()"></i>
@@ -388,6 +390,10 @@
                 <button id="addDocBtn" onclick="addDocumentation()">Add Documentation</button>
             </div>
         </div>
+<!-- Add this inside your existing <section id="docPopup"> -->
+<div id="addLibraryDoc" style="display: none;"></div>
+
+        
     </section>
 
     <!-- Integration Popup -->

@@ -173,7 +173,7 @@ body {
 .main .mainCard {
     margin: 10px 40px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -183,7 +183,22 @@ body {
     padding: 10px;
     text-align: center;
     line-height: 40px;
+     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+
 }
+.mainCard .notHover:hover{
+
+    
+}
+
+.mainCard .cards:active{
+    transform: scale(0.8);
+   
+     
+}
+
 
 .cards .cardName {
     color: #60a5fa;
@@ -487,7 +502,7 @@ select,
 
 /* Container for the API cards */
 
-#apiCardContainer {
+#apiCardContainer,#libraryCardContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
@@ -515,7 +530,7 @@ select,
     margin-bottom: 20px;
 }
 
-.apiCard:hover,.categoryCard:hover {
+.apiCard:hover,.categoryCard:hover,.mainCard .cardHover:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     border-color: rgba(96, 165, 250, 0.3);
@@ -675,7 +690,7 @@ select,
 }
 
 #addDoc,
-#addIntegration {
+#addIntegration,#addLibraryDoc {
     background-color: #1e293b;
     width: 60%;
     max-height: 90vh;
@@ -688,7 +703,7 @@ select,
 }
 
 #addDoc .addApiName,
-#addIntegration .addApiName {
+#addIntegration .addApiName,#addLibraryDoc .addApiName {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -698,14 +713,14 @@ select,
 }
 
 #addDoc .addApiName h1,
-#addIntegration .addApiName h1 {
+#addIntegration .addApiName h1,#addLibraryDoc .addApiName h1 {
     color: #60a5fa;
     font-size: 24px;
     font-weight: 600;
 }
 
 #addDoc .addApiName i,
-#addIntegration .addApiName i {
+#addIntegration .addApiName i ,#addLibraryDoc .addApiName i {
     color: #94a3b8;
     font-size: 24px;
     cursor: pointer;
@@ -713,7 +728,7 @@ select,
 }
 
 #addDoc .addApiName i:hover,
-#addIntegration .addApiName i:hover {
+#addIntegration .addApiName i:hover ,#addLibraryDoc .addApiName i:hover{
     color: #ef4444;
 }
 

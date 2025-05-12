@@ -116,14 +116,17 @@ window.backWindow = function backWindow() {
 window.addAPI = function addAPI() {
     let popup = document.getElementById("popup")
     popup.style.display = "flex"
-    document.getElementById("addliraries").style.display="none"
+    document.getElementById("addAPI").style.display="block"
+    document.getElementById("addLibraries").style.display="none"
+  
 }
 
- window.addLibrary = function (){
+ window.addLibrary = function addLibrary(){
     let popup = document.getElementById("popup")
     popup.style.display = "flex"
-
     document.getElementById("addAPI").style.display="none"
+    document.getElementById("addLibraries").style.display="block"
+ 
  }
 window.cancel = function cancel() {
     let popup = document.getElementById("popup")
@@ -228,6 +231,224 @@ window.addData = async function addData() {
         alert("Failed to add API.");
     }
 };
+window.addingLibrary = async function addingLibrary() {
+  // Get values from input fields
+  const name = document.getElementById('libName')?.value.trim();
+  const description = document.getElementById('libDescription')?.value.trim();
+  const language = document.getElementById('libLanguage')?.value.trim();
+  const category = document.getElementById('libCategory')?.value;
+  const version = document.getElementById('libVersion')?.value.trim();
+  const license = document.getElementById('libLicense')?.value.trim();
+  const repoUrl = document.getElementById('libRepo')?.value.trim();
+  const docUrl = document.getElementById('libDocUrl')?.value.trim();
+
+  const installation = document.getElementById('libInstallation')?.value.trim();
+  const usage = document.getElementById('libUsage')?.value.trim();
+  const integration = document.getElementById('libIntegration')?.value.trim();
+
+  // Validate required fields
+  if (!name || !description || !language || !category || !version || !license || !repoUrl || !docUrl || !installation || !usage || !integration) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  // Prepare library data object
+  const libraryData = {
+    name,
+    description,
+    language: language.split(',').map(lang => lang.trim()),
+    category,
+    version,
+    license,
+    
+    usage: {
+         name,
+         description,
+          language: language.split(',').map(lang => lang.trim()),
+         category,
+         repository: repoUrl,
+         documentationUrl: docUrl,
+      installation,
+      usageExamples: usage,
+      integrationSteps: integration
+    },
+    createdAt: new Date()
+  };
+
+  try {
+    // Firestore save operation
+    await addDoc(collection(db, "libraries"), libraryData);
+     
+    
+    document.getElementById("popup").style.display = "none";
+    fetchLibraries(); // Fetch and display libraries when the page is loaded
+   
+    // Optional: Clear form fields
+    document.querySelectorAll('#addLibraries input, #addLibraries textarea, #addLibraries select').forEach(el => el.value = '');
+    // Optional: Refresh library cards if implemented
+    
+  } catch (error) {
+    console.error("Error adding library:", error);
+    
+  }
+};
+
+
+
+
+ async function fetchLibraries() {
+    const librariesCollection = collection(db, "libraries"); // Firestore collection reference
+    const querySnapshot = await getDocs(librariesCollection); // Fetch all documents
+    const container = document.getElementById("libraryCardContainer"); // Get the container element
+    const countDiv = document.getElementById("libraryCountDiv"); // Div to display library count
+
+    container.innerHTML = ""; // Clear existing content in the container
+
+    // Show total count of libraries
+    countDiv.innerText = `  ${querySnapshot.size}`;
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data(); // Get library data from each document
+        const libraryCard = document.createElement("div"); // Create a new div for the library card
+        libraryCard.className = "apiCard"; // Add class for styling
+        libraryCard.setAttribute('data-library-id', doc.id); // Store library ID in the card
+        libraryCard.innerHTML = `
+            <div class="cardHeader">
+                <h2>${data.name}</h2>
+                <i class="fa fa-trash delete-icon" onclick="deleteLibrary('${doc.id}', '${data.name}')" title="Delete Library"></i>
+            </div>
+            <p>${data.description}</p>
+            <p><b>Languages: </b>${data.language.join(', ')}</p>
+            <p><b>Category: </b>${data.category}</p>
+            <p><b>Version: </b>${data.version}</p>
+            <p><b>License: </b>${data.license}</p>
+            <div class="viewBtn">
+                <button onclick="viewLibraryDocumentation('${doc.id}')" class="edit-btn">View Documentation</button>
+               
+            </div>
+        `;
+        container.appendChild(libraryCard); // Add the card to the container
+    });
+}
+window.deleteLibrary = async function(libraryId, libraryName) {
+    if (confirm(`Are you sure you want to delete the library "${libraryName}"?`)) {
+        try {
+            const libraryRef = doc(db, "libraries", libraryId); // Reference to the library document
+            await deleteDoc(libraryRef); // Delete the library document from Firestore
+
+            // Find and remove the specific library card from the DOM
+            const cardToRemove = document.querySelector(`.apiCard[data-library-id="${libraryId}"]`);
+            if (cardToRemove) {
+                cardToRemove.remove(); // Remove the card from the container
+            }
+
+            alert("Library deleted successfully!");
+            showNotification("Library has been deleted successfully", "delete");
+            return true;
+        } catch (error) {
+            console.error("Error deleting library: ", error);
+            alert("Failed to delete library.");
+            return false;
+        }
+    }
+}
+
+window.onload = () => {
+    fetchLibraries(); // Fetch and display libraries when the page is loaded
+};
+ 
+window.viewLibraryDocumentation = async function(libraryId) {
+    document.getElementById("addLibraryDoc").style.display = "block";
+    document.getElementById("addDoc").style.display = "none";
+
+    try {
+        const docRef = doc(db, "libraries", libraryId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            const docPopup = document.getElementById("docPopup");
+            docPopup.style.display = "flex";
+
+            document.getElementById("addLibraryDoc").innerHTML = `
+                <div class="addApiName">
+                    <h1>${data.name} Documentation</h1>
+                    <i class="fa fa-xmark" onclick="closeDocPopup()"></i>
+                </div>
+                <div class="addApiInput">
+
+                    ${generateEditableField("description", data.description, libraryId)}
+                    ${generateEditableField("language", data.language.join(', '), libraryId)}
+                    ${generateEditableField("category", data.category, libraryId)}
+                    ${generateEditableField("version", data.version, libraryId)}
+                    ${generateEditableField("license", data.license, libraryId)}
+                    ${generateEditableField("repository", data.repository, libraryId)}
+                    ${generateEditableField("docUrl", data.docUrl, libraryId)}
+                    ${generateEditableField("installation", data.installation, libraryId)}
+                    ${generateEditableField("usage", data.usage, libraryId)}
+                    ${generateEditableField("integration", data.integration, libraryId)}
+
+                </div>
+            `;
+        } else {
+            alert("Library documentation not found!");
+        }
+    } catch (error) {
+        console.error("Error loading library documentation: ", error);
+        alert("Error loading documentation");
+    }
+};
+
+function generateEditableField(field, value, id) {
+    return `
+    <div class="section-header">
+        <span>${capitalize(field)}</span>
+        <button class="edit-toggle-btn small" onclick="toggleEditField('${field}', '${id}')">
+            <i class="fas fa-edit"></i>
+        </button>
+    </div>
+    <div class="code-block">
+        <pre id="${field}-content-${id}">${value}</pre>
+        <div class="edit-field" id="${field}-edit-${id}" style="display: none;">
+            <textarea id="${field}-input-${id}" class="edit-input">${value}</textarea>
+            <button class="update-btn" onclick="updateLibraryDocField('${id}', '${field}')">
+                <i class="fas fa-save"></i> Update
+            </button>
+        </div>
+    </div>
+    `;
+}
+
+function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+window.updateLibraryDocField = async function(libraryId, fieldName) {
+    try {
+        const inputValue = document.getElementById(`${fieldName}-input-${libraryId}`).value;
+        const docRef = doc(db, "libraries", libraryId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+
+            await setDoc(docRef, {
+                ...data,
+                [fieldName]: fieldName === "language" ? inputValue.split(",").map(e => e.trim()) : inputValue
+            });
+
+            document.getElementById(`${fieldName}-content-${libraryId}`).innerHTML = inputValue;
+            toggleEditField(fieldName, libraryId);
+
+            showNotification(`Library ${fieldName} updated successfully`, "update");
+        }
+    } catch (error) {
+        console.error("Error updating library field: ", error);
+        alert("Failed to update documentation");
+    }
+};
+
+
 
 // Function to add library data to Firestore
  
@@ -274,6 +495,8 @@ async function fetchData(dashboardContainer) {
 
 // Function to view documentation
 window.viewDocumentation = async function(apiId) {
+       document.getElementById("addDoc").style.display="block"
+      document.getElementById("addLibraryDoc").style.display="none"
     try {
         const docRef = doc(db, "apis", apiId);
         const docSnap = await getDoc(docRef);
