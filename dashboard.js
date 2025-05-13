@@ -262,10 +262,7 @@ window.addingLibrary = async function addingLibrary() {
     license,
     
     usage: {
-         name,
-         description,
-          language: language.split(',').map(lang => lang.trim()),
-         category,
+        
          repository: repoUrl,
          documentationUrl: docUrl,
       installation,
@@ -2196,7 +2193,7 @@ window.handleCategoryChange= function handleCategoryChange(value) {
                     <p class="code-block"> ${data.description}</p>
                     <div class="section-header">Languages</div>
                     <p class="code-block"> ${data.language.join(', ')}</p>
- <div class="section-header">Category</div>
+                     <div class="section-header">Category</div>
                     <p class="code-block">> ${data.category}</p>
                      <div class="section-header">Version</div>
                       <div class="section-header">Repository</div>

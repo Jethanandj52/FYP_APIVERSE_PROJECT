@@ -2389,3 +2389,8 @@ border: 1px solid rgba(96, 165, 250, 0.1);
 .libraryViewBtn button{
     width: 85%;
 }
+
+.libraryHomeCardContainer{
+    display: grid !important;
+    grid-template-columns: repeat(3,1fr) !important;
+}
