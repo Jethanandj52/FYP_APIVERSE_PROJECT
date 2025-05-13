@@ -52,7 +52,10 @@
                             <i class="fas fa-plug"></i>
                             <div class="name">API</div>
                         </div>
-                       
+                        <div class="navigation2" onclick="lib()">
+                            <i class="fas fa-box"></i>
+                            <div class="name">Libraries</div>
+                        </div>
                         <div class="navigation2" onclick="team()">
                             <i class="fas fa-users"></i>
                             <div class="name">Team</div>
@@ -108,56 +111,8 @@
                     </div>
 
                 </div>
-                <!-- api managment -->
-                <div id="home" class="api" style="display: none;">
-                    <div id="popular">
-                        <h2><i class="fas fa-chart-line"></i> Popular Api</h2> <br>
-                        <div id="apiHomeCardContainer"></div>
-                        
 
-
-                    </div>
-
-                    <h2><i class="fas fa-box"></i> Category</h2> <br>
-                    
-                    <div class="mainCard categoryContainer">
-                        <div class="cards categoryCard" onclick="weather()">
-                            <div class="cardName">Weather Api</div>
-                        </div>
-                        <div class="cards categoryCard" onclick="news()">
-                            <div class="cardName">News Api</div>
-                        </div>
-                        <div class="cards categoryCard" onclick="payment()">
-                            <div class="cardName">Payment Api</div>
-                        </div>
-                        <div class="cards categoryCard" onclick="communication()">
-                            <div class="cardName">Communication Api</div>
-                        </div>
-                        
-                        <div class="cards categoryCard" onclick="entertainment()">
-                            <div class="cardName">Entertainment Api</div>
-                        </div>
-                        <div class="cards categoryCard" onclick="development()">
-                            <div class="cardName">Development Api</div>
-                        </div>
-
-                        <div class="cards categoryCard" onclick="geoLocation()">
-                            <div class="cardName">Geo Location Api</div>
-                        </div>
-
-                        <div class="cards categoryCard" onclick="allApi()">
-                            <div class="cardName">View All Api's</div>
-                        </div>
-                    </div>
-                    <br>
-                   
-
-                    
-
-                </div>
-
-
-                <div id="doc" style="display:block;">
+                 <div id="doc" style="display:block;">
                      
                     <section class="api-info-section">
                         <h2>📘 What is an API?</h2>
@@ -246,62 +201,63 @@
                     
                     </section>
                                     </div>
+                <!-- api managment -->
+                
+
+
+
+                <div id="home" class="api" style="display: none;">
+                    <div id="popular">
+                        <h2><i class="fas fa-chart-line"></i> Popular Api</h2> <br>
+                        <div id="apiHomeCardContainer"></div>
+                        
+
+
+                    </div>
+
+                    <h2><i class="fas fa-box"></i> Category</h2> <br>
+                    
+                    <div class="mainCard categoryContainer">
+                        <div class="cards categoryCard" onclick="weather()">
+                            <div class="cardName">Weather Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="news()">
+                            <div class="cardName">News Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="payment()">
+                            <div class="cardName">Payment Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="communication()">
+                            <div class="cardName">Communication Api</div>
+                        </div>
+                        
+                        <div class="cards categoryCard" onclick="entertainment()">
+                            <div class="cardName">Entertainment Api</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="development()">
+                            <div class="cardName">Development Api</div>
+                        </div>
+
+                        <div class="cards categoryCard" onclick="geoLocation()">
+                            <div class="cardName">Geo Location Api</div>
+                        </div>
+
+                        <div class="cards categoryCard" onclick="allApi()">
+                            <div class="cardName">View All Api's</div>
+                        </div>
+                    </div>
+                    <br>
+                   
+
+                    
+
+                </div>
+
+
+               
 
                 <!-- usermanagment -->
-                <section id="team" class="section">
-                    <h2><i class="fas fa-users"></i> Our Team</h2>
-                    <div class="team-section">
-                        
-                        <!-- Jethanand -->
-<div class="team-card">
-    <div class="team-member-img">
-        <img src="assets/jethanand.png" alt="Jethanand Image">
-    </div>
-    <h3>Jethanand</h3>
-    <p class="role">Backend Developer</p>
-    <p>Skilled in Node.js, Express, and MongoDB. Handles server logic and API management.</p>
-    <div class="social-links">
-        <a href="https://github.com/jethanandj52" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jethanand-malhi-319ba9212/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.facebook.com/jethanand.malhi.94" target="_blank"><i class="fab fa-facebook"></i></a>
-    </div>
-</div>
-
-<!-- Jai Parkash -->
-<div class="team-card">
-    <div class="team-member-img">
-        <img src="assets/image.png" alt="Jai Parkash Image">
-    </div>
-    <h3>Jai Parkash</h3>
-    <p class="role">Frontend Designer</p>
-    <p>Expert in HTML, CSS, and JavaScript. Focused on UI/UX and responsive design.</p>
-    <div class="social-links">
-        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-    </div>
-</div>
-
-<!-- Dileep Singh -->
-<div class="team-card">
-    <div class="team-member-img">
-        <img src="assets/dileep.png" alt="Dileep Singh Image">
-    </div>
-    <h3>Dileep Singh</h3>
-    <p class="role">Documentation & Integration</p>
-    <p>Organized documentation expert skilled in JavaScript and Firebase. Manages API integration and clear technical writing.</p>
-
-    <div class="social-links">
-        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-    </div>
-</div>
-
-                         
-                
-                    </div>
-                </section>
+              
                 
             <section id="weatherAPI">
                 <div class="category">
@@ -487,6 +443,249 @@
                 <div id="allApiContainer" class="categoryDisplay"></div>
 
             </section>
+
+            <!-- libraries -->
+
+ <div id="allLibraries" style="display: none;">
+                           <div id="popular">
+                        <h2><i class="fas fa-chart-line"></i> Popular Libraries</h2> <br>
+                        <div id="libraryHomeCardContainer"></div>
+                    </div>
+                     <h2><i class="fas fa-box"></i> Category</h2> <br>
+                        <div class="mainCard categoryContainer">
+                        <div class="cards categoryCard" onclick="uiLibraries()" >
+                            <div class="cardName">UI Libraries</div>
+                        </div>
+                        <div class="cards categoryCard"  onclick="backendLibraries()">
+                            <div class="cardName">Backend Libraries</div>
+                        </div>
+                        <div class="cards categoryCard" onclick="networkingLibraries()" >
+                            <div class="cardName">Networking Libraries</div>
+                        </div>
+                        <div class="cards categoryCard"  onclick="testingLibraries()">
+                            <div class="cardName">Testing Libraries</div>
+                        </div>
+                        
+                        <div class="cards categoryCard"  onclick="utitlitesLibraries()">
+                            <div class="cardName">Utilites Libraries</div>
+                        </div>
+                        
+
+                        
+
+                        <div class="cards categoryCard" onclick="libraryAll()">
+                            <div class="cardName">View All Libraries</div>
+                        </div>
+                    </div>
+
+
+
+                 </div>
+
+               <section id="ui" style="display: none;">
+                <div class="category">
+                    <h2 id="weather">UI Libraries</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleLibraryCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="ui" selected>UI</option>
+    <option value="backend">Backend</option>
+    <option value="networking">Networking</option>
+    <option value="testing">testing</option>
+    <option value="utilites">Utilites</option>
+   
+    <option value="allLibrary">All Libraries</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="uiContainer" class="categoryDisplay"></div>
+            </section>
+
+  <section id="backend" style="display: none;">
+                <div class="category">
+                    <h2 id="weather">Backend Libraries</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleLibraryCategoryChange(this.value)">
+    <option value="" disabled  >Choose Category</option>
+    <option value="ui" >UI</option>
+    <option value="backend" selected>Backend</option>
+    <option value="networking">Networking</option>
+    <option value="testing">testing</option>
+    <option value="utilites">Utilites</option>
+   
+    <option value="allLibrary">All Libraries</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="backendContainer" class="categoryDisplay"></div>
+            </section>
+
+              <section id="networking" style="display: none;">
+                <div class="category">
+                    <h2 id="weather">Networking Libraries</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleLibraryCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="ui" >UI</option>
+    <option value="backend" >Backend</option>
+    <option value="networking" selected>Networking</option>
+    <option value="testing">testing</option>
+    <option value="utilites">Utilites</option>
+   
+    <option value="allLibrary">All Libraries</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="networingContainer" class="categoryDisplay"></div>
+            </section>
+
+
+              <section id="testing" style="display: none;">
+                <div class="category">
+                    <h2 id="weather">Testing Libraries</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleLibraryCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="ui" >UI</option>
+    <option value="backend" >Backend</option>
+    <option value="networking">Networking</option>
+    <option value="testing" selected>testing</option>
+    <option value="utilites">Utilites</option>
+   
+    <option value="allLibrary">All Libraries</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="testingContainer" class="categoryDisplay"></div>
+            </section>
+
+
+              <section id="utilites" style="display: none;">
+                <div class="category">
+                    <h2 id="weather">Utilites Libraries</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleLibraryCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="ui" >UI</option>
+    <option value="backend">Backend</option>
+    <option value="networking">Networking</option>
+    <option value="testing">testing</option>
+    <option value="utilites" selected>Utilites</option>
+   
+    <option value="allLibrary">All Libraries</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="utilitesContainer" class="categoryDisplay"></div>
+            </section>
+
+              <section id="allLibrarys" style="display: none;">
+                <div class="category">
+                    <h2 id="weather">All Libraries</h2>
+                    <div>
+                        <select id="categorySelect" onchange="handleLibraryCategoryChange(this.value)">
+    <option value="" disabled selected>Choose Category</option>
+    <option value="ui" >UI</option>
+    <option value="backend">Backend</option>
+    <option value="networking">Networking</option>
+    <option value="testing">testing</option>
+    <option value="utilites">Utilites</option>
+   
+    <option value="allLibrary" selected>All Libraries</option>
+</select>
+
+                        
+                    </div>
+                </div>
+                
+
+                <div id="AllLibraryContainer" class="categoryDisplay"></div>
+            </section>
+  <!-- 🔽 Reusable Popup for View Documentation -->
+<div id="docPopup" class="doc-popup" style="display: none;">
+    <div id="addLibraryDoc" class="doc-content">
+        <!-- Documentation content will be injected here -->
+    </div>
+</div>
+
+
+        
+    </section>
+
+              <section id="team" class="section">
+                    <h2><i class="fas fa-users"></i> Our Team</h2>
+                    <div class="team-section">
+                        
+                        <!-- Jethanand -->
+<div class="team-card">
+    <div class="team-member-img">
+        <img src="assets/jethanand.png" alt="Jethanand Image">
+    </div>
+    <h3>Jethanand</h3>
+    <p class="role">Backend Developer</p>
+    <p>Skilled in Node.js, Express, and MongoDB. Handles server logic and API management.</p>
+    <div class="social-links">
+        <a href="https://github.com/jethanandj52" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jethanand-malhi-319ba9212/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/jethanand.malhi.94" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+<!-- Jai Parkash -->
+<div class="team-card">
+    <div class="team-member-img">
+        <img src="assets/image.png" alt="Jai Parkash Image">
+    </div>
+    <h3>Jai Parkash</h3>
+    <p class="role">Frontend Designer</p>
+    <p>Expert in HTML, CSS, and JavaScript. Focused on UI/UX and responsive design.</p>
+    <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+<!-- Dileep Singh -->
+<div class="team-card">
+    <div class="team-member-img">
+        <img src="assets/dileep.png" alt="Dileep Singh Image">
+    </div>
+    <h3>Dileep Singh</h3>
+    <p class="role">Documentation & Integration</p>
+    <p>Organized documentation expert skilled in JavaScript and Firebase. Manages API integration and clear technical writing.</p>
+
+    <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+                         
+                
+                    </div>
+                </section>
                 <!-- About Section -->
                 <section id="about" class="section about-section modern-about">
                     <div class="about-card">

@@ -354,7 +354,9 @@ window.deleteLibrary = async function(libraryId, libraryName) {
 }
 
 window.onload = () => {
-    fetchLibraries(); // Fetch and display libraries when the page is loaded
+    fetchLibraries();
+    // viewLibraryDocumentation()
+     // Fetch and display libraries when the page is loaded
 };
  
 window.viewLibraryDocumentation = async function(libraryId) {
@@ -1326,6 +1328,49 @@ async function fetchPopularApis( ) {
 // Fetch only popular APIs
 fetchPopularApis();
 
+async function fetchPopularLibrary( ) {
+    const apisCollection = collection(db, "libraries");
+    const querySnapshot = await getDocs(apisCollection);
+    const container = document.getElementById("libraryHomeCardContainer");
+    const countDiv = document.getElementById("apiCountDiv");
+
+    container.innerHTML = ""; // Clear the container
+    
+    // Show total count
+    countDiv.innerText = ` ${querySnapshot.size}`;
+    
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+
+        // Check if the 'popular' field is true
+        if (data.popular === true) {
+            const apiCard = document.createElement("div");
+            apiCard.className = "apiCard";
+            apiCard.setAttribute('data-api-id', doc.id);
+            apiCard.innerHTML = `
+                <div class="cardHeader">
+                    <h2>${data.name}</h2>
+                    <i class="fa fa-heart heart-icon" onclick="toggleFavorite('${doc.id}')" title="Add to Favorites"></i>
+                </div>
+                <p>${data.description}</p>
+                <p><b>Languages: </b>${data.language.join(', ')}</p>
+                <p><b>Security: </b>${data.security}</p>
+                <p><b>License: </b>${data.license}</p>
+                <div class="veiwBtn libraryViewBtn">
+                    <button onclick="libraryDoc('${doc.id}')" class="edit-btn">View Doc</button>
+                   
+                </div>
+            `;
+            container.appendChild(apiCard);
+
+            // Update heart icon color based on favorite status
+            updateHeartIcon(doc.id);
+        }
+    });
+}
+
+// Fetch only popular APIs
+fetchPopularLibrary();
 
 window.viewDocumentationHome = async function(apiId) {
     try {
@@ -1775,6 +1820,7 @@ async function fetchCategoryData(category, containerId) {
 }
 
 
+
 window.weather=function weather(){
     document.getElementById("doc").style.display = 'none'
     document.getElementById("home").style.display = "none"
@@ -1794,6 +1840,21 @@ window.weather=function weather(){
 
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="none"
+
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+      document.getElementById("allLibrarys").style.display="none"
+
 fetchCategoryData("Weather", "weatherApiContainer")
    
 }
@@ -1821,7 +1882,21 @@ window.news=function news(){
 
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="none"
-   
+
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
+
 fetchCategoryData("News","newsApiContainer")
 
 }
@@ -1847,6 +1922,21 @@ window.payment=function payment(){
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="none"
 
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
+
+
 fetchCategoryData("Payment","paymentApiContainer")
 
    
@@ -1871,6 +1961,20 @@ window.communication=function communication(){
     document.getElementById("developmentAPI").style.display="none"
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="none"
+
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
 
 fetchCategoryData("Communication","communicationApiContainer")
 
@@ -1898,6 +2002,21 @@ window.entertainment=function entertainment(){
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="none"
 
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+     document.getElementById("allLibrarys").style.display="none"
+
+
 fetchCategoryData("Entertainment","entertainmentApiContainer")
 
    
@@ -1924,6 +2043,20 @@ window.development=function development(){
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="none"
 
+
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+    document.getElementById("allLibrarys").style.display="none"
+
 fetchCategoryData("Development","developmentApiContainer")
 
    
@@ -1949,6 +2082,22 @@ window.geoLocation=function geoLocation(){
     document.getElementById("geoLocationAPI").style.display="block"
     document.getElementById("allAPI").style.display="none"
 
+
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+       document.getElementById("allLibrarys").style.display="none"
+
+
 fetchCategoryData("Geolocation","geoApiContainer")
 
    
@@ -1973,10 +2122,27 @@ window.allApi=function allApi(){
 
     document.getElementById("geoLocationAPI").style.display="none"
     document.getElementById("allAPI").style.display="block"
+
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+      document.getElementById("allLibrarys").style.display="none"
+
    
     fetchHomeData("allApiContainer")
     
 }
+
+
 
 window.handleCategoryChange= function handleCategoryChange(value) {
     switch (value) {
@@ -2006,4 +2172,393 @@ window.handleCategoryChange= function handleCategoryChange(value) {
             break;
     }
 }
+ 
+ window.libraryDoc = async function(libraryId) {
+    document.getElementById("addLibraryDoc").style.display = "block";
+    document.getElementById("addDoc").style.display = "none";
 
+    try {
+        const docRef = doc(db, "libraries", libraryId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            const docPopup = document.getElementById("docPopup");
+            docPopup.style.display = "flex";
+
+            document.getElementById("addLibraryDoc").innerHTML = `
+                <div class="addApiName">
+                    <h1>${data.name} Documentation</h1>
+                    <i class="fa fa-xmark" onclick="closeDocPopup()"></i>
+                </div>
+                <div class="addApiInput">
+                <div class="section-header">Description</div>
+                    <p class="code-block"> ${data.description}</p>
+                    <div class="section-header">Languages</div>
+                    <p class="code-block"> ${data.language.join(', ')}</p>
+ <div class="section-header">Category</div>
+                    <p class="code-block">> ${data.category}</p>
+                     <div class="section-header">Version</div>
+                      <div class="section-header">Repository</div>
+                    <p class="code-block">  <a href="${data.repository}" target="_blank">${data.repository}</a></p>
+                     <div class="section-header">Documentation URL</div>
+                    <p class="code-block"> <a href="${data.docUrl}" target="_blank">${data.docUrl}</a></p>
+                     <div class="section-header">Installation</div>
+                    <p class="code-block"> ${data.installation}</p>
+                     <div class="section-header">Usage</div>
+                    <p class="code-block"> ${data.usage}</p>
+                     <div class="section-header">Integration:</div>
+                    <p class="code-block">  ${data.integration}</p>
+                </div>
+            `;
+        } else {
+            alert("Library documentation not found!");
+        }
+    } catch (error) {
+        console.error("Error loading library documentation: ", error);
+        alert("Error loading documentation");
+    }
+};
+
+
+
+async function fetchAllLibraries(containerId) {
+    const apisCollection = collection(db, "libraries");
+    const querySnapshot = await getDocs(apisCollection); // Get all documents without filter
+
+    const container = document.getElementById(containerId); // Target container
+    container.innerHTML = ""; // Clear container before loading new content
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const apiCard = document.createElement("div");
+        apiCard.className = "apiCard";
+        apiCard.setAttribute('data-api-id', doc.id);
+        apiCard.innerHTML = `
+            <div class="cardHeader">
+                <h2>${data.name}</h2>
+                <i class="fa fa-heart heart-icon" onclick="toggleFavorite('${doc.id}')" title="Add to Favorites"></i>
+            </div>
+            <p>${data.description}</p>
+            <p><b>Languages: </b>${data.language.join(', ')}</p>
+            <p><b>Security: </b>${data.security}</p>
+            <p><b>License: </b>${data.license}</p>
+            <div class="veiwBtn libraryViewBtn">
+                <button onclick="libraryDoc ('${doc.id}')" class="edit-btn">View Doc</button>
+            </div>
+        `;
+        container.appendChild(apiCard);
+        updateHeartIcon(doc.id); // Call to update heart icon if favorite
+    });
+}
+ 
+
+
+async function fetchLibraryCategoryData(category, containerId) {
+    const apisCollection = collection(db, "libraries");
+    const categoryQuery = query(apisCollection, where("category", "==", category));
+    const querySnapshot = await getDocs(categoryQuery);
+
+    const container = document.getElementById(containerId); // Get dynamic container
+    
+
+    container.innerHTML = ""; // Clear container
+     
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const apiCard = document.createElement("div");
+        apiCard.className = "apiCard";
+        apiCard.setAttribute('data-api-id', doc.id);
+        apiCard.innerHTML = `
+            <div class="cardHeader">
+                <h2>${data.name}</h2>
+                <i class="fa fa-heart heart-icon" onclick="toggleFavorite('${doc.id}')" title="Add to Favorites"></i>
+            </div>
+            <p>${data.description}</p>
+            <p><b>Languages: </b>${data.language.join(', ')}</p>
+            <p><b>Security: </b>${data.security}</p>
+            <p><b>License: </b>${data.license}</p>
+            <div class="veiwBtn libraryViewBtn">
+                <button onclick="libraryDoc ('${doc.id}')" class="edit-btn">View Doc</button>
+                 </div>
+        `;
+        container.appendChild(apiCard);
+        updateHeartIcon(doc.id); // Update heart icon
+    });
+}
+
+
+window.uiLibraries= function uiLibraries(){
+     document.getElementById("doc").style.display = 'none'
+    document.getElementById("home").style.display = "none"
+    document.getElementById("team").style.display = "none"
+    document.getElementById("about").style.display = "none"
+    document.getElementById("contact").style.display = "none"
+    document.getElementById("weatherAPI").style.display="none"
+    document.getElementById("newsAPI").style.display="none"
+
+    document.getElementById("paymentAPI").style.display="none"
+
+    document.getElementById("communicationAPI").style.display="none"
+
+    document.getElementById("entertainmentAPI").style.display="none"
+
+    document.getElementById("developmentAPI").style.display="none"
+
+    document.getElementById("geoLocationAPI").style.display="none"
+    document.getElementById("allAPI").style.display="none"
+
+    document.getElementById("allLibraries").style.display="none"
+
+    document.getElementById("ui").style.display="block"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
+
+
+
+fetchLibraryCategoryData("UI", "uiContainer")
+}
+
+window.backendLibraries= function backendLibraries(){
+     document.getElementById("doc").style.display = 'none'
+    document.getElementById("home").style.display = "none"
+    document.getElementById("team").style.display = "none"
+    document.getElementById("about").style.display = "none"
+    document.getElementById("contact").style.display = "none"
+    document.getElementById("weatherAPI").style.display="none"
+    document.getElementById("newsAPI").style.display="none"
+
+    document.getElementById("paymentAPI").style.display="none"
+
+    document.getElementById("communicationAPI").style.display="none"
+
+    document.getElementById("entertainmentAPI").style.display="none"
+
+    document.getElementById("developmentAPI").style.display="none"
+
+    document.getElementById("geoLocationAPI").style.display="none"
+    document.getElementById("allAPI").style.display="none"
+
+    document.getElementById("allLibraries").style.display="none"
+
+    document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="block"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+    document.getElementById("allLibrarys").style.display="none"
+
+
+fetchLibraryCategoryData("Backend", "backendContainer")
+
+// fetchCategoryData("Weather", "weatherApiContainer")
+}
+
+window.networkingLibraries= function networkingLibraries(){
+     document.getElementById("doc").style.display = 'none'
+    document.getElementById("home").style.display = "none"
+    document.getElementById("team").style.display = "none"
+    document.getElementById("about").style.display = "none"
+    document.getElementById("contact").style.display = "none"
+    document.getElementById("weatherAPI").style.display="none"
+    document.getElementById("newsAPI").style.display="none"
+
+    document.getElementById("paymentAPI").style.display="none"
+
+    document.getElementById("communicationAPI").style.display="none"
+
+    document.getElementById("entertainmentAPI").style.display="none"
+
+    document.getElementById("developmentAPI").style.display="none"
+
+    document.getElementById("geoLocationAPI").style.display="none"
+    document.getElementById("allAPI").style.display="none"
+
+    document.getElementById("allLibraries").style.display="none"
+
+    document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="block"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+      document.getElementById("allLibrarys").style.display="none"
+
+
+fetchLibraryCategoryData("Networking", "networkingContainer")
+
+// fetchCategoryData("Weather", "weatherApiContainer")
+}
+
+window.utitlitesLibraries= function utilitesLibraries(){
+     document.getElementById("doc").style.display = 'none'
+    document.getElementById("home").style.display = "none"
+    document.getElementById("team").style.display = "none"
+    document.getElementById("about").style.display = "none"
+    document.getElementById("contact").style.display = "none"
+    document.getElementById("weatherAPI").style.display="none"
+    document.getElementById("newsAPI").style.display="none"
+
+    document.getElementById("paymentAPI").style.display="none"
+
+    document.getElementById("communicationAPI").style.display="none"
+
+    document.getElementById("entertainmentAPI").style.display="none"
+
+    document.getElementById("developmentAPI").style.display="none"
+
+    document.getElementById("geoLocationAPI").style.display="none"
+    document.getElementById("allAPI").style.display="none"
+
+    document.getElementById("allLibraries").style.display="none"
+
+    document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="block"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
+
+fetchLibraryCategoryData("Utilites", "utilitesContainer")
+
+
+// fetchCategoryData("Weather", "weatherApiContainer")
+}
+
+window.testingLibraries= function testingLibraries(){
+     document.getElementById("doc").style.display = 'none'
+    document.getElementById("home").style.display = "none"
+    document.getElementById("team").style.display = "none"
+    document.getElementById("about").style.display = "none"
+    document.getElementById("contact").style.display = "none"
+    document.getElementById("weatherAPI").style.display="none"
+    document.getElementById("newsAPI").style.display="none"
+
+    document.getElementById("paymentAPI").style.display="none"
+
+    document.getElementById("communicationAPI").style.display="none"
+
+    document.getElementById("entertainmentAPI").style.display="none"
+
+    document.getElementById("developmentAPI").style.display="none"
+
+    document.getElementById("geoLocationAPI").style.display="none"
+    document.getElementById("allAPI").style.display="none"
+
+    document.getElementById("allLibraries").style.display="none"
+
+    document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="block"
+
+     document.getElementById("allLibrarys").style.display="none"
+
+fetchLibraryCategoryData("Testing", "testingContainer")
+
+
+// fetchCategoryData("Weather", "weatherApiContainer")
+}
+
+window.libraryAll= function libraryAll(){
+     document.getElementById("doc").style.display = 'none'
+    document.getElementById("home").style.display = "none"
+    document.getElementById("team").style.display = "none"
+    document.getElementById("about").style.display = "none"
+    document.getElementById("contact").style.display = "none"
+    document.getElementById("weatherAPI").style.display="none"
+    document.getElementById("newsAPI").style.display="none"
+
+    document.getElementById("paymentAPI").style.display="none"
+
+    document.getElementById("communicationAPI").style.display="none"
+
+    document.getElementById("entertainmentAPI").style.display="none"
+
+    document.getElementById("developmentAPI").style.display="none"
+
+    document.getElementById("geoLocationAPI").style.display="none"
+    document.getElementById("allAPI").style.display="none"
+
+    document.getElementById("allLibraries").style.display="none"
+
+    document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="block"
+
+fetchAllLibraries("AllLibraryContainer")
+
+// fetchCategoryData("Weather", "weatherApiContainer")
+}
+
+
+
+window.handleLibraryCategoryChange= function handleLibraryCategoryChange(value) {
+    switch (value) {
+        case "ui":
+            uiLibraries();
+            break;
+        case "backend":
+            backendLibraries();
+            break;
+        case "networking":
+            networkingLibraries();
+            break;
+        case "utilites":
+          utitlitesLibraries();
+            break;
+        case "testing":
+           testingLibraries();
+            break;
+       
+        case "allLibrary":
+           libraryAll();
+            break;
+    }
+}

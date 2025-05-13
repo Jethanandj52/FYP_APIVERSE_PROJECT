@@ -1,6 +1,8 @@
  
 
  window.apis = function apis() {
+    document.getElementById("allLibraries").style.display="none"
+
      document.getElementById("home").style.display = "block"
      document.getElementById("doc").style.display = 'none'
      document.getElementById("team").style.display = "none"
@@ -14,10 +16,59 @@
      document.getElementById("developmentAPI").style.display="none"
      document.getElementById("geoLocationAPI").style.display="none"
      document.getElementById("allAPI").style.display="none"
+
+      document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+    document.getElementById("allLibrarys").style.display="none"
+
+    
+
     
  }
+window.lib = function lib() {
+    document.getElementById("allLibraries").style.display="block"
+     document.getElementById("home").style.display = "none"
+     document.getElementById("doc").style.display = 'none'
+     document.getElementById("team").style.display = "none"
+     document.getElementById("about").style.display = "none"
+     document.getElementById("contact").style.display = "none"
+     document.getElementById("weatherAPI").style.display="none"
+     document.getElementById("newsAPI").style.display="none"
+     document.getElementById("paymentAPI").style.display="none"
+     document.getElementById("communicationAPI").style.display="none"
+     document.getElementById("entertainmentAPI").style.display="none"
+     document.getElementById("developmentAPI").style.display="none"
+     document.getElementById("geoLocationAPI").style.display="none"
+     document.getElementById("allAPI").style.display="none"
 
+      document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+      document.getElementById("allLibrarys").style.display="none"
+
+    
+ }
  window.doc = function doc() {
+    document.getElementById("allLibraries").style.display="none"
+
      document.getElementById("doc").style.display = ' block'
      document.getElementById("home").style.display = "none"
      document.getElementById("team").style.display = "none"
@@ -37,10 +88,27 @@
 
      document.getElementById("geoLocationAPI").style.display="none"
      document.getElementById("allAPI").style.display="none"
+
+      document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
+
     
  }
 
  window.team = function team() {
+    document.getElementById("allLibraries").style.display="none"
+
      document.getElementById("doc").style.display = 'none'
      document.getElementById("home").style.display = "none"
      document.getElementById("team").style.display = "block"
@@ -61,6 +129,19 @@
      document.getElementById("geoLocationAPI").style.display="none"
      document.getElementById("allAPI").style.display="none"
     
+ document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
 
 
 
@@ -68,6 +149,8 @@
 
 
  window.information = function information() {
+    document.getElementById("allLibraries").style.display="none"
+
      document.getElementById("doc").style.display = 'none'
      document.getElementById("home").style.display = "none"
      document.getElementById("team").style.display = "none"
@@ -87,13 +170,27 @@
 
      document.getElementById("geoLocationAPI").style.display="none"
      document.getElementById("allAPI").style.display="none"
-    
+     document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+    document.getElementById("allLibrarys").style.display="none"
+
 
 
 
  }
 
  window.contact = function contact() {
+    document.getElementById("allLibraries").style.display="none"
+
      document.getElementById("doc").style.display = 'none'
      document.getElementById("home").style.display = "none"
      document.getElementById("team").style.display = "none"
@@ -113,6 +210,19 @@
      document.getElementById("allAPI").style.display="none"
     
 
+ document.getElementById("ui").style.display="none"
+
+  
+
+    document.getElementById("backend").style.display="none"
+
+    document.getElementById("networking").style.display="none"
+
+    document.getElementById("utilites").style.display="none"
+
+    document.getElementById("testing").style.display="none"
+
+    document.getElementById("allLibrarys").style.display="none"
 
  }
  

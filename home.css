@@ -2384,3 +2384,8 @@ border: 1px solid rgba(96, 165, 250, 0.1);
     justify-content: space-between;
 }
 
+
+
+.libraryViewBtn button{
+    width: 85%;
+}
