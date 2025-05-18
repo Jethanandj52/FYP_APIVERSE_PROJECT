@@ -381,11 +381,11 @@ window.viewLibraryDocumentation = async function(libraryId) {
                     ${generateEditableField("category", data.category, libraryId)}
                     ${generateEditableField("version", data.version, libraryId)}
                     ${generateEditableField("license", data.license, libraryId)}
-                    ${generateEditableField("repository", data.repository, libraryId)}
-                    ${generateEditableField("docUrl", data.docUrl, libraryId)}
-                    ${generateEditableField("installation", data.installation, libraryId)}
-                    ${generateEditableField("usage", data.usage, libraryId)}
-                    ${generateEditableField("integration", data.integration, libraryId)}
+                    ${generateEditableField("repository", data.usage.repository, libraryId)}
+                    ${generateEditableField("docUrl", data.usage.documentationUrl, libraryId)}
+                    ${generateEditableField("installation", data.usage.installation, libraryId)}
+                    ${generateEditableField("usage", data.usage.usageExamples, libraryId)}
+                    ${generateEditableField("integration", data.usage.integrationSteps, libraryId)}
 
                 </div>
             `;
@@ -1381,9 +1381,11 @@ window.viewDocumentationHome = async function(apiId) {
             // Show the popup
             const docPopup = document.getElementById("docPopup");
             docPopup.style.display = "flex";
-
+document.getElementById("addLibraryDoc").style.display="none"
+let apiDoc=document.getElementById("addDoc")
+apiDoc.style.display="block"
             // Update popup content without edit buttons
-            document.getElementById("addDoc").innerHTML = `
+            apiDoc.innerHTML = `
                 <div class="addApiName">
                     <h1>${docData.title}</h1>
                     <i class="fa fa-xmark" onclick="closeDocPopup()"></i>
@@ -2194,18 +2196,18 @@ window.handleCategoryChange= function handleCategoryChange(value) {
                     <div class="section-header">Languages</div>
                     <p class="code-block"> ${data.language.join(', ')}</p>
                      <div class="section-header">Category</div>
-                    <p class="code-block">> ${data.category}</p>
-                     <div class="section-header">Version</div>
+                    <p class="code-block"> ${data.category}</p>
+                  
                       <div class="section-header">Repository</div>
-                    <p class="code-block">  <a href="${data.repository}" target="_blank">${data.repository}</a></p>
+                    <p class="code-block">  <a href="${data.usage.repository}" target="_blank">${data.usage.repository}</a></p>
                      <div class="section-header">Documentation URL</div>
-                    <p class="code-block"> <a href="${data.docUrl}" target="_blank">${data.docUrl}</a></p>
+                    <p class="code-block"> <a href="${data.usage.documentationUrl}" target="_blank">${data.usage.documentationUrl}</a></p>
                      <div class="section-header">Installation</div>
-                    <p class="code-block"> ${data.installation}</p>
+                    <p class="code-block"> ${data.usage.installation}</p>
                      <div class="section-header">Usage</div>
-                    <p class="code-block"> ${data.usage}</p>
+                    <p class="code-block"> ${data.usage.usageExamples}</p>
                      <div class="section-header">Integration:</div>
-                    <p class="code-block">  ${data.integration}</p>
+                    <p class="code-block">  ${data.usage.integrationSteps}</p>
                 </div>
             `;
         } else {
