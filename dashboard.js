@@ -24,20 +24,30 @@ import {
 const ctx = document.getElementById('apiUsageChart').getContext('2d');
 
 new Chart(ctx, {
-    type: 'line', // Chart ka type (line, bar, pie, etc.)
+    type: 'line', // Chart type
     data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // X-axis ke values
-        datasets: [{
-            label: 'API Calls', // Line ka naam (legend mein aata hai)
-            data: [500, 700, 600, 800, 900, 1000], // Y-axis values
-            borderColor: '#60a5fa', // Line ka color
-            backgroundColor: 'transparent', // Fill color (transparent for line chart)
-            tension: 0, // Smooth curves
-            pointBackgroundColor: '#60a5fa' // Dots ka color
-        }]
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // X-axis (Months)
+        datasets: [
+            {
+                label: 'API Calls',
+                data: [500, 700, 600, 800, 900, 1000],
+                borderColor: '#60a5fa', // Blue
+                backgroundColor: 'transparent',
+                tension: 0,
+                pointBackgroundColor: '#60a5fa'
+            },
+            {
+                label: 'Library Usage',
+                data: [300, 400, 450, 500, 550, 600],
+                borderColor: '#34d399', // Green
+                backgroundColor: 'transparent',
+                tension: 0,
+                pointBackgroundColor: '#34d399'
+            }
+        ]
     },
     options: {
-        responsive: true, // Mobile friendly
+        responsive: true,
         plugins: {
             legend: {
                 labels: {
@@ -55,7 +65,7 @@ new Chart(ctx, {
                 }
             },
             y: {
-                beginAtZero: true, // Y-axis 0 se start kare
+                beginAtZero: true,
                 ticks: {
                     color: document.body.classList.contains('light-theme') ? '#000000' : '#ffffff'
                 },
@@ -66,6 +76,7 @@ new Chart(ctx, {
         }
     }
 });
+
 // Common function to hide all sections
 function hideAllSections() {
     document.getElementById("overview").style.display = "none";
